@@ -89,6 +89,8 @@ def main():
         for i in range(0, len(images)):
             generate_ascii(images[i], names[i], ascii_dir, new_width, ascii)
 
+        print("Great success!")
+
     except:
         print("Stonks, looks like you did some dumb shit D: Read the --> readme.md <-- retard")
 
