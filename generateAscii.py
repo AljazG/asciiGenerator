@@ -92,7 +92,7 @@ def main():
         print("Great success!")
 
     except:
-        print("Stonks, looks like you did some dumb shit D: Read the --> readme.md <-- retard")
+        print("Stonks, looks like you did some dumb shit D: Read the --> readme.md <--")
 
 
 if __name__ == "__main__":
