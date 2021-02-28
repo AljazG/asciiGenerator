@@ -1,4 +1,4 @@
-import PIL.Image
+from PIL import Image, ImageEnhance
 import os
 
 
@@ -32,6 +32,7 @@ def pixels_to_ascii(image, selected_ascii):
         asc = ASCII70
 
     chars = []
+
     d = int(255 / len(asc))
 
     for pixel in pixels:
@@ -43,11 +44,17 @@ def pixels_to_ascii(image, selected_ascii):
     return "".join(chars)
 
 
+def enhance_image(image):
+    enhancer = ImageEnhance.Contrast(image)
+    enhanced = enhancer.enhance(2)
+    return enhanced
+
+
 def load_images_from_folder(folder):
     images = []
     names = []
     for filename in os.listdir(folder):
-        img = PIL.Image.open(folder + filename)
+        img = Image.open(folder + filename)
         if img is not None:
             images.append(img)
             base = os.path.basename(folder + filename)
@@ -57,7 +64,12 @@ def load_images_from_folder(folder):
 
 
 def generate_ascii(image, name, ascii_dir, new_width, ascii):
-    new_image_data = pixels_to_ascii(img_to_gray(resize_image(image, new_width)), ascii)
+
+    enhanced = enhance_image(image)
+    resized = resize_image(enhanced, new_width)
+    gray = img_to_gray(resized)
+
+    new_image_data = pixels_to_ascii(gray, ascii)
     count = len(new_image_data)
 
     ascii_image = "\n".join(new_image_data[i:(i + new_width)] for i in range(0, count, new_width))
@@ -68,7 +80,6 @@ def generate_ascii(image, name, ascii_dir, new_width, ascii):
 
 def main():
     try:
-
         images, names = load_images_from_folder("./photos/")
         ascii_dir = "./generated_ascii/"
 
