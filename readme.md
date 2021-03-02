@@ -21,4 +21,4 @@ A simple python script written to convert images into ascii art.
 7. Input if you would like to preserve the aspect ratio (default is 1):
 * 1 -> doesn't preserve aspect ratio but it is more detailed
 * 2 -> preserves the aspect ratio on the account of some detail loss
-1. Celebrate as your ascii art awaits for you in "./generated_ascii/" ;)
+8. Celebrate as your ascii art awaits for you in "./generated_ascii/" ;)
