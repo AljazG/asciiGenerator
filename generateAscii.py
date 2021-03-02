@@ -10,7 +10,6 @@ ASCII11 = ["@", "#", "S", "%", "?", "*", ";", ":", ",", ".", " "]
 
 ASCII70 = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
 
-
 def resize_image(image, new_width=100):
     width, height = image.size
     ratio = height / width
@@ -25,6 +24,7 @@ def img_to_gray(image):
 
 
 def pixels_to_ascii(image, selected_ascii):
+
     pixels = image.getdata()
     asc = ASCII11
 
@@ -63,7 +63,7 @@ def load_images_from_folder(folder):
     return images, names
 
 
-def generate_ascii(image, name, ascii_dir, new_width, ascii):
+def generate_ascii(image, name, ascii_dir, new_width, ascii, preserve_ratio):
 
     enhanced = enhance_image(image)
     resized = resize_image(enhanced, new_width)
@@ -72,10 +72,16 @@ def generate_ascii(image, name, ascii_dir, new_width, ascii):
     new_image_data = pixels_to_ascii(gray, ascii)
     count = len(new_image_data)
 
-    ascii_image = "\n".join(new_image_data[i:(i + new_width)] for i in range(0, count, new_width))
+    line_length = new_width
+
+    if preserve_ratio == 2:
+        line_length = new_width * 2
+
+    ascii_image = "\n".join(new_image_data[i:(i + new_width)] for i in range(0, count, line_length))
 
     with open(ascii_dir + name + ".txt", "w") as f:
         f.write(ascii_image)
+
 
 
 def main():
@@ -89,6 +95,14 @@ def main():
         print("Choose desired ascii scheme (1 or 2, leave empty for default):")
         ascii = input()
 
+        print("Preserve aspect ratio? (1 / empty - no, 2 - yes)")
+        preserve_ratio = input()
+
+        if preserve_ratio == '':
+            preserve_ratio = 1
+        else:
+            preserve_ratio = int(preserve_ratio)
+
         if ascii == '':
             ascii = 1
         else:
@@ -98,7 +112,7 @@ def main():
             os.mkdir(ascii_dir)
 
         for i in range(0, len(images)):
-            generate_ascii(images[i], names[i], ascii_dir, new_width, ascii)
+            generate_ascii(images[i], names[i], ascii_dir, new_width, ascii, preserve_ratio)
 
         print("Great success!")
 
@@ -108,3 +122,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

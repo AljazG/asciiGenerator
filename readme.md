@@ -18,4 +18,7 @@ A dank ass python script designed to convert your legal anime lolli photos into 
 6. input a number corresponding to desired ascii scheme (default is 1): 
 * 1 -> 11 ascii characters
 * 2 -> 70 ascii characters
-7. celebrate as your transformed ascii anime girls are waiting for you in "./generated_ascii/"
+7. input if you would like to preserve the aspect ratio (default is 1):
+* 1 -> doesn't preserve aspect ratio but it is more detailed
+* 2 -> preserves the aspect ratio on the account of some detail loss
+8. celebrate as your transformed ascii anime girls are waiting for you in "./generated_ascii/"
