@@ -1,3 +1,4 @@
 .idea/
 generated_ascii/
 photos/*
+!photos/yansha.jpg

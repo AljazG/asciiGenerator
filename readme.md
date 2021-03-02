@@ -1,6 +1,6 @@
-## The Grubko ascii img generator
+## The Grubko ascii image generator
 
-A dank ass python script designed to convert your legal anime lolli photos into more legal and clean ascii grills
+A simple python script written to convert images into ascii art.
 
 ### Requirements
 
@@ -10,15 +10,15 @@ A dank ass python script designed to convert your legal anime lolli photos into 
 
 ### Usage
 
-1. make sure python and pip are installed
-2. run `pip install pillow`
-3. put desired photos in ./photos/
-4. run script: `python generateAscii.py`
-5. input the desired width of your ascii output (height will be scaled appropriately)
-6. input a number corresponding to desired ascii scheme (default is 1): 
+1. Make sure python and pip are installed
+2. Run `pip install pillow`
+3. Put desired photos in ./photos/
+4. Run script: `python generateAscii.py`
+5. Input the desired width of your ascii output (height will be scaled appropriately)
+6. Input a number corresponding to desired ascii scheme (default is 1): 
 * 1 -> 11 ascii characters
 * 2 -> 70 ascii characters
-7. input if you would like to preserve the aspect ratio (default is 1):
+7. Input if you would like to preserve the aspect ratio (default is 1):
 * 1 -> doesn't preserve aspect ratio but it is more detailed
 * 2 -> preserves the aspect ratio on the account of some detail loss
-8. celebrate as your transformed ascii anime girls are waiting for you in "./generated_ascii/"
+1. Celebrate as your ascii art awaits for you in "./generated_ascii/" ;)
